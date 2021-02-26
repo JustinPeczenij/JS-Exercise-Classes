@@ -89,9 +89,13 @@ class Airplane {
     }
 
     drive(distance){
-      this.odometer += distance;
-      this.tank  -= distance / this.milesPerGallon 
-      if(this.tank == 0){
+      if(distance < this.tank * this.milesPerGallon){
+        this.odometer += distance;
+        this.tank  -= distance / this.milesPerGallon 
+      }  
+      else{
+        this.odometer = this.tank * this.milesPerGallon
+        this.tank = 0
         return `I ran out of fuel at ${this.odometer} miles!`
       }
     }
@@ -144,11 +148,11 @@ class Airplane {
     }
 
     demo(subject){
-      returns `'Today we are learning about ${subject}'`
+      return `Today we are learning about ${subject}`
     }
 
     grade(student, subject){
-      returns `'${student.name} receives a perfect score on ${subject}'`
+      return `'${student.name} receives a perfect score on ${subject}'`
     }
  }
   /*
@@ -175,15 +179,15 @@ class Airplane {
     }
 
     listSubjects(){
-      return `${this.favSubject}`
+      return `${this.favSubjects}`
     }
 
     PRAssignment(subject){
-      return `${student.name} has submitted a PR for ${subject}`
+      return `${this.name} has submitted a PR for ${subject}`
     }
 
     sprintChallenge(subject){
-      return `${student.name} has begun sprint challenge on ${subject}`
+      return `${this.name} has begun sprint challenge on ${subject}`
     }
  }
   
